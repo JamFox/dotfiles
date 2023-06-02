@@ -1,5 +1,7 @@
 # JamFox's dotfiles
 
+Inspired by [home as dotfile git repository](https://drewdevault.com/2019/12/30/dotfiles.html).
+
 Set up new host:
 
 ```bash

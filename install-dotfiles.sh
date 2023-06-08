@@ -2,6 +2,7 @@
 if [[ -d ~/.git ]]; then
     echo "Home already initialized as repository!"
     echo "Pulling latest..."
+    cd ~
     git pull
 else
     echo "Initializing home as repository..."

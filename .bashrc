@@ -411,4 +411,12 @@ function saveit ()
         done
 }
 
-eval $(keychain --eval --quiet ~/.ssh/* 2>/dev/null)
+# Keychain
+if command -v keychain >/dev/null 2>&1; then
+	eval $(keychain --eval --quiet ~/.ssh/* 2>/dev/null)
+fi
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

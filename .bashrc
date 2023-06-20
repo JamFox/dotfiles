@@ -103,6 +103,7 @@ alias gd='git diff --color-words'
 alias gp='git push'
 alias gpo='git push origin'
 alias gpl='git pull'
+alias gf='git fetch'
 
 alias apb='ansible-playbook'
 

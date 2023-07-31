@@ -116,6 +116,10 @@ alias desk='cd ~/Desktop'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 alias pict='cd ~/Pictures'
+alias wdocu="cd /mnt/c/Users/$USER/Documents"
+alias wpict="cd /mnt/c/Users/$USER/Pictures"
+alias wdown="cd /mnt/c/Users/$USER/Downloads"
+alias wdesk="cd /mnt/c/Users/$USER/Desktop"
 
 # Search running processes
 alias p="ps aux | grep "
@@ -421,3 +425,8 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH

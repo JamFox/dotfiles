@@ -84,6 +84,7 @@ alias h='history'
 alias tree='tree --dirsfirst -F'
 alias mkdir='mkdir -p -v'
 alias grep='grep --color=auto'
+alias catc="grep -vE '^(#|$)'"
 
 alias gs='git status'
 alias ga='git add'

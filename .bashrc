@@ -34,7 +34,19 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # Edit this .bashrc file
 alias ebrc='edit ~/.bashrc'
 
-export PS1="\[\033[38;5;217m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;216m\]\h\[$(tput sgr0)\]: \[$(tput sgr0)\]\[\033[38;5;159m\](\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\] \w\n> \[$(tput sgr0)\]"
+
+parse_git_branch() {
+    if [ -f .git/HEAD ]; then
+        branch=$(cat .git/HEAD | sed -n 's/ref: refs\/heads\///p')
+        if [ -n "$branch" ]; then
+            echo "$branch"
+            return
+        fi
+    fi
+    echo ""
+}
+export PS1="\[\033[38;5;217m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;216m\]\h\[$(tput sgr0)\]: \[$(tput sgr0)\]\[\033[38;5;159m\](\$(parse_git_branch))\[$(tput sgr0)\] \w\n> \[$(tput sgr0)\]"
+
 export EDITOR=vim
 
 HISTTIMEFORMAT="%F %T "

@@ -390,15 +390,17 @@ ver ()
 # Show current network information
 netinfo ()
 {
-	echo "--------------- Network Information ---------------"
-	/sbin/ifconfig | awk /'inet addr/ {print $2}'
-	echo ""
-	/sbin/ifconfig | awk /'Bcast/ {print $3}'
-	echo ""
-	/sbin/ifconfig | awk /'inet addr/ {print $4}'
-
-	/sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
-	echo "---------------------------------------------------"
+	interfaces="$(ip link show | awk -F: '$1>0 {print $2}' | grep -v lo)"
+	ips="$(for int in ${interfaces[@]};
+  		do
+		    	state="$(ip link show $int | awk '{print $9}')"
+		    	ip_addr="$(ip -4 add show $int | grep inet | awk '{print $2}'| awk -F/ '{print $1}')"
+		    	if [ ! -z $ip_addr ]; then
+			      	echo "[$int/$state]:" $ip_addr
+		    	fi
+	  	done
+	)"
+	echo $ips
 }
 
 # IP address lookup
@@ -414,6 +416,22 @@ function whatsmyip ()
 	# External IP Lookup
 	echo -n "External IP: " ; wget http://smart-ip.net/myip -O - -q
 }
+
+function os ()
+{
+	if [ -f /etc/lsb-release ]; then
+		os=$(lsb_release -s -d)
+	elif [ -f /etc/debian_version ]; then
+		os="Debian $(cat /etc/debian_version)"
+	elif [ -f /etc/redhat-release ]; then
+		os=`cat /etc/redhat-release`
+	else
+		os="$(uname -s) $(uname -r)"
+	fi
+	echo $os
+}
+
+alias disk_mounts="df -hT | grep -Ev 'devtmpfs|tmpfs'"
 
 function saveit ()
 {

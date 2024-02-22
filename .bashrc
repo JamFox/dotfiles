@@ -458,9 +458,9 @@ curlt() {
         "time_total": %{time_total}
     }\n'
     if [[ $1 == https://* ]]; then
-        curl -w "$curl_format" -o /dev/null -s -k "$@"
+        curl -w "$curl_format" -o /dev/null -s -k $@
     else
-        curl -w "$curl_format" -o /dev/null -s "$@"
+        curl -w "$curl_format" -o /dev/null -s $@
     fi
 }
 

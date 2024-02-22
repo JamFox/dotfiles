@@ -447,6 +447,23 @@ function saveit ()
         done
 }
 
+curlt() {
+    curl_format='{
+        "time_namelookup": %{time_namelookup},
+        "time_connect": %{time_connect},
+        "time_appconnect": %{time_appconnect},
+        "time_pretransfer": %{time_pretransfer},
+        "time_redirect": %{time_redirect},
+        "time_starttransfer": %{time_starttransfer},
+        "time_total": %{time_total}
+    }\n'
+    if [[ $1 == https://* ]]; then
+        curl -w "$curl_format" -o /dev/null -s -k "$@"
+    else
+        curl -w "$curl_format" -o /dev/null -s "$@"
+    fi
+}
+
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
 	eval $(keychain --eval --quiet ~/.ssh/* 2>/dev/null)

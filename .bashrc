@@ -483,3 +483,14 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 PATH="$HOME/.local/bin:$PATH"
+
+# fnm
+export PATH="/home/jamfox/.local/share/fnm:$PATH"
+if command -v fnm -h &> /dev/null; then
+    eval "`fnm env`"
+fi
+
+# cargo
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi

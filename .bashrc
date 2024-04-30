@@ -498,3 +498,7 @@ fi
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
+
+if command -v mise --version &> /dev/null; then
+    eval "$(/home/katurv/.local/bin/mise activate bash)"
+fi

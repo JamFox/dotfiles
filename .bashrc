@@ -467,6 +467,10 @@ curlt() {
     fi
 }
 
+kh() {
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$1"
+}
+
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
 	eval $(keychain --eval --quiet ~/.ssh/* 2>/dev/null)

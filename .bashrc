@@ -489,7 +489,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH="$HOME/.local/bin:$PATH"
 
 # fnm
-export PATH="/home/jamfox/.local/share/fnm:$PATH"
+export PATH="$HOME/.local/share/fnm:$PATH"
 if command -v fnm -h &> /dev/null; then
     eval "`fnm env`"
 fi
@@ -500,5 +500,5 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 if command -v mise --version &> /dev/null; then
-    eval "$(/home/katurv/.local/bin/mise activate bash)"
+    eval "$($HOME/.local/bin/mise activate bash)"
 fi

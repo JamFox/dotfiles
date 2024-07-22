@@ -164,6 +164,15 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 # Fix SSH permissions
 alias fssh="find .ssh/ -type f -exec chmod 600 {} \;; find .ssh/ -type d -exec chmod 700 {} \;; find .ssh/ -type f -name '*.pub' -exec chmod 644 {} \;"
 
+# Automatically do an ls after each cd
+cd() {
+  if [ -n "$1" ]; then
+    builtin cd "$@" && ls -la --group-directories-first
+  else
+    builtin cd ~ && ls -la --group-directories-first
+  fi
+}
+
 # Check if a port is available
 portcheck() {
   if [ -z "$1" ]

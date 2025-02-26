@@ -511,3 +511,5 @@ fi
 if command -v mise --version &> /dev/null; then
     eval "$($HOME/.local/bin/mise activate bash)"
 fi
+
+grep -q "^172.21.5.213 vault.hpclocal$" /etc/hosts || sudo bash -c 'echo "172.21.5.213 vault.hpclocal" >> /etc/hosts'

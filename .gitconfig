@@ -3,6 +3,8 @@
         email = github@jamfox.dev
 [pull]
         ff = only
+
+# Next from: https://blog.gitbutler.com/how-git-core-devs-configure-git/
 # clearly makes git better
 
 [column]

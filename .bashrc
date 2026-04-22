@@ -134,7 +134,7 @@ alias wpict="cd /mnt/c/Users/$USER/Pictures"
 alias wdown="cd /mnt/c/Users/$USER/Downloads"
 alias wdesk="cd /mnt/c/Users/$USER/Desktop"
 
-alias vlk="vl karlt -i ~/.ssh/id_ed25519 -a && source $HOME/.vault-vars"
+alias vlk="vl hpc-karl -i ~/.ssh/id_ed25519 -a && source $HOME/.vault-vars"
 alias vlr="vl katurv -i ~/.ssh/id_ed25519 -a && source $HOME/.vault-vars"
 
 # Search running processes
